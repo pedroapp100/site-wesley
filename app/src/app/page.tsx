@@ -87,7 +87,7 @@ function Hero() {
           className="hidden object-cover object-[66%_38%] md:block"
         />
 
-        <div className="relative z-10 px-6 py-10 md:flex md:flex-1 md:flex-col md:justify-center md:px-10 md:py-28">
+        <div className="relative z-10 px-6 pb-10 pt-2 md:flex md:flex-1 md:flex-col md:justify-center md:px-10 md:py-28">
           <div className="mx-auto w-full max-w-6xl">
             <div className="max-w-xl">
               <h1 className="text-4xl font-display font-extrabold leading-[1.05] tracking-tight text-white sm:text-6xl md:text-[3.6rem] lg:text-7xl">
