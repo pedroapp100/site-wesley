@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #0b0d10;
+  --paper: #f6f4ef;
+  --cyan: #00bff4;
+  --cyan-deep: #0b87ae;
+  --slate: #6b7280;
+  --line: #e4e1d8;
+  --line-dark: rgba(255, 255, 255, 0.14);
+}
+
+@theme inline {
+  --color-background: var(--paper);
+  --color-foreground: var(--ink);
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-cyan: var(--cyan);
+  --color-cyan-deep: var(--cyan-deep);
+  --color-slate: var(--slate);
+  --color-line: var(--line);
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, "Cascadia Code", "SF Mono", Consolas, monospace;
+  --font-display: var(--font-manrope), var(--font-poppins), Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-poppins), Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

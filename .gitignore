@@ -1,0 +1,10 @@
+# segredos locais - nunca versionar
+.env
+.env.*
+
+# configs pessoais do editor/Claude Code (não compartilhar)
+.claude/settings.local.json
+
+# sistema
+.DS_Store
+Thumbs.db
