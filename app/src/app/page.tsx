@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Reveal } from "@/components/ui/Reveal";
 
 const WHATSAPP_NUMBER = "5511999999999"; // Substituir pelo número real
 const WHATSAPP_MSG = encodeURIComponent(
@@ -128,7 +129,7 @@ function Hero() {
         </div>
       </section>
 
-      <div className="relative z-10 border-t border-white/10 bg-ink text-paper">
+      <Reveal className="relative z-10 border-t border-white/10 bg-ink text-paper">
         <div className="mx-auto grid max-w-6xl grid-cols-1 divide-y divide-line-dark px-6 sm:grid-cols-3 sm:divide-x sm:divide-y-0 md:px-10">
           {outcomes.map((o) => (
             <div key={o.title} className="flex items-center gap-3 py-5 sm:justify-center sm:py-6">
@@ -137,7 +138,7 @@ function Hero() {
             </div>
           ))}
         </div>
-      </div>
+      </Reveal>
     </>
   );
 }
@@ -188,7 +189,7 @@ function Sintomas() {
   return (
     <section id="sintomas" className="bg-paper px-6 py-24 md:px-10 md:py-32">
       <div className="mx-auto max-w-6xl">
-        <div className="max-w-xl">
+        <Reveal className="max-w-xl">
           <PrecisionTag label="Onde dói, exatamente?" className="text-slate" />
           <h2 className="mt-4 text-4xl font-display font-extrabold leading-[1.05] text-ink md:text-5xl">
             Sua dor tem nome.
@@ -199,43 +200,44 @@ function Sintomas() {
             Toque no que mais parece com o que você sente. A gente já direciona
             sua avaliação pro ponto certo.
           </p>
-        </div>
+        </Reveal>
 
         <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-6">
           {symptoms.map((s) => (
-            <Link
+            <Reveal
               key={s.slug}
-              href={`/quiz?sintoma=${s.slug}`}
-              className={`group relative block aspect-[4/3] overflow-hidden rounded-2xl bg-ink ${
+              className={`group relative aspect-[4/3] overflow-hidden rounded-2xl bg-ink ${
                 s.wide ? "sm:col-span-2 lg:col-span-3" : "lg:col-span-2"
               }`}
             >
-              <Image
-                src={s.img}
-                alt={s.label}
-                fill
-                quality={100}
-                sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"
-                className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/15 to-transparent transition-opacity group-hover:from-ink/85" />
-              <div className="absolute inset-0 ring-1 ring-inset ring-white/10 transition-colors group-hover:ring-cyan/60" />
+              <Link href={`/quiz?sintoma=${s.slug}`} className="absolute inset-0 block">
+                <Image
+                  src={s.img}
+                  alt={s.label}
+                  fill
+                  quality={100}
+                  sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"
+                  className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/15 to-transparent transition-opacity group-hover:from-ink/85" />
+                <div className="absolute inset-0 ring-1 ring-inset ring-white/10 transition-colors group-hover:ring-cyan/60" />
 
-              <div className="absolute left-4 top-4">
-                <PrecisionTag label={s.tag} dark />
-              </div>
+                <div className="absolute left-4 top-4">
+                  <PrecisionTag label={s.tag} dark />
+                </div>
 
-              <div className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-paper opacity-0 backdrop-blur-sm transition-opacity group-hover:opacity-100">
-                <ArrowIcon />
-              </div>
+                <div className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-paper opacity-0 backdrop-blur-sm transition-opacity group-hover:opacity-100">
+                  <ArrowIcon />
+                </div>
 
-              <div className="absolute inset-x-0 bottom-0 p-5">
-                <p className="text-lg font-bold text-white md:text-xl">{s.label}</p>
-                <p className="mt-1 font-mono text-[11px] uppercase tracking-wide text-paper/60">
-                  {s.sub}
-                </p>
-              </div>
-            </Link>
+                <div className="absolute inset-x-0 bottom-0 p-5">
+                  <p className="text-lg font-bold text-white md:text-xl">{s.label}</p>
+                  <p className="mt-1 font-mono text-[11px] uppercase tracking-wide text-paper/60">
+                    {s.sub}
+                  </p>
+                </div>
+              </Link>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -257,7 +259,7 @@ function Sobre() {
       <SpineLine className="pointer-events-none absolute -left-6 bottom-0 h-[80%] w-10 text-cyan/10" />
 
       <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-[1.05fr_1fr] md:gap-16">
-        <div className="relative">
+        <Reveal className="relative">
           <div className="relative aspect-[3/2] w-full overflow-hidden rounded-2xl border-l-2 border-cyan">
             <Image
               src="/images/about-fit.jpg"
@@ -274,9 +276,9 @@ function Sobre() {
           <p className="mt-3 font-mono text-[10px] uppercase tracking-wider text-paper/40">
             Anápolis-GO · Consultório próprio
           </p>
-        </div>
+        </Reveal>
 
-        <div className="flex flex-col justify-center">
+        <Reveal className="flex flex-col justify-center">
           <PrecisionTag label="Quem cuida de você" className="text-cyan" />
           <h2 className="mt-4 text-4xl font-display font-extrabold leading-tight md:text-5xl">
             Wesley Loureno.
@@ -302,7 +304,7 @@ function Sobre() {
               </li>
             ))}
           </ul>
-        </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -320,16 +322,16 @@ function ProvaSocial() {
   return (
     <section id="depoimentos" className="bg-paper px-6 py-24 md:px-10 md:py-32">
       <div className="mx-auto max-w-6xl">
-        <div className="max-w-xl">
+        <Reveal className="max-w-xl">
           <PrecisionTag label="Quem já sentiu a diferença" className="text-slate" />
           <h2 className="mt-4 text-4xl font-display font-extrabold leading-[1.05] text-ink md:text-5xl">
             Resultado que se sente.
             <br />
             <span className="text-cyan-deep">Não que se promete.</span>
           </h2>
-        </div>
+        </Reveal>
 
-        <div className="mt-10 flex flex-wrap gap-x-12 gap-y-6 border-y border-line py-8">
+        <Reveal className="mt-10 flex flex-wrap gap-x-12 gap-y-6 border-y border-line py-8">
           <div>
             <p className="font-mono text-4xl font-bold text-ink md:text-5xl">
               10 mil<span className="text-cyan-deep">+</span>
@@ -342,16 +344,18 @@ function ProvaSocial() {
             </p>
             <p className="mt-1 text-sm text-slate">pacientes já atendidos</p>
           </div>
-        </div>
+        </Reveal>
 
         <div className="mt-12">
-          <PrecisionTag label="Direto do consultório" className="text-slate" />
-          <h3 className="mt-4 text-2xl font-display font-extrabold text-ink md:text-3xl">
-            Sessões reais, sem cortes.
-          </h3>
+          <Reveal>
+            <PrecisionTag label="Direto do consultório" className="text-slate" />
+            <h3 className="mt-4 text-2xl font-display font-extrabold text-ink md:text-3xl">
+              Sessões reais, sem cortes.
+            </h3>
+          </Reveal>
           <div className="mt-8 grid gap-6 sm:grid-cols-3">
             {sessionVideos.map((v) => (
-              <div key={v.src} className="relative aspect-[9/12.8] overflow-hidden rounded-2xl bg-ink">
+              <Reveal key={v.src} className="relative aspect-[9/12.8] overflow-hidden rounded-2xl bg-ink">
                 <video
                   src={v.src}
                   poster={v.poster}
@@ -360,7 +364,7 @@ function ProvaSocial() {
                   preload="none"
                   className="h-full w-full object-cover"
                 />
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -399,7 +403,7 @@ function CtaFinal() {
       <div className="absolute inset-0 hidden bg-gradient-to-r from-ink from-0% via-ink/45 via-30% to-transparent to-52% md:block" />
       <SpineLine className="pointer-events-none absolute right-10 top-1/2 hidden h-[120%] w-16 -translate-y-1/2 text-cyan/15 lg:block" />
 
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-6 py-12 md:px-0 md:py-0">
+      <Reveal className="relative z-10 mx-auto w-full max-w-6xl px-6 py-12 md:px-0 md:py-0">
         <PrecisionTag label="Invista em você" className="text-cyan" />
         <h2 className="mt-5 max-w-2xl text-4xl font-display font-extrabold leading-[1.05] md:text-6xl">
           Volte a andar, trabalhar
@@ -426,7 +430,7 @@ function CtaFinal() {
             prefere WhatsApp? fale direto
           </a>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }
